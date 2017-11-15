@@ -1,8 +1,5 @@
 language: php
 php: 
     - '7.0'
-before_script:
-    - mkdir php-codesniffer && curl -L https://github.com/squizlabs/PHP_CodeSniffer/archive/master.tar.gz | tar xz --strip-components=1 -C php-codesniffer
 script:
     - find -L . -name '*.php' -print0 | xargs -0 -n 1 -P 4 php -l
-    - /php-codesniffer/scripts/phpcs --standard=/phpcs.ruleset.xml .
