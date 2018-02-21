@@ -1,17 +1,9 @@
-sudo: required
-
 language: php
 php:
     - 7.2.2
 
 services:
     - docker
-
-before_install:
-    - docker pull php:7.2.2-cli-alpine3.7
-
-install:
-    - docker run php:7.2.2-cli-alpine3.7
 
 jobs:
     include:
