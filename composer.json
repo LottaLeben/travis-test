@@ -1,0 +1,21 @@
+{
+    "name": "lottaleben/travis-test",
+    "description": "just a simple travis-ci test for php",
+    "authors": [
+        {
+            "name": "Benedikt Fischer",
+            "email": "bf@lottaleben.de"
+        }
+    ],
+    "require": {},
+    "require-dev": {
+        "wp-cli/wp-cli": "^1.5",
+        "sebastian/phpcpd": "^4.0",
+        "squizlabs/php_codesniffer": "*",
+        "phploc/phploc": "^4.0",
+        "phpmd/phpmd": "@stable",
+        "jakub-onderka/php-parallel-lint": "0.9.2",
+        "salaros/wp-cli-salts-command": "^0.6.1",
+        "deployer/dist": "^6.0"
+    }
+}
