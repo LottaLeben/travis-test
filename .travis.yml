@@ -11,6 +11,7 @@ stages:
 jobs:
     include:
         - stage: test
-          script: vendor/bin/parallel-lint --exclude vendor/ .
-          script: vendor/bin/phpcs --standard=PSR2 --extensions=php --ignore=vendor/ .
-          script: vendor/bin/phploc --count-tests --exclude vendor/ .
+          script:
+            - vendor/bin/parallel-lint --exclude vendor/ .
+            - vendor/bin/phpcs --standard=PSR2 --extensions=php --ignore=vendor/ .
+            - vendor/bin/phploc --count-tests --exclude vendor/ .
