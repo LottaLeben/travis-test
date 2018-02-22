@@ -1,6 +1,6 @@
 language: php
 php:
-    - 7.2
+    - 7.2.2
 
 install:
     - composer install
@@ -14,3 +14,7 @@ jobs:
           addons:
             mariadb: '10.3'
           script: echo 'lol'
+
+stages:
+    - test
+    - wordpress theme unit tests
