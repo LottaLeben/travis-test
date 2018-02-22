@@ -1,5 +1,7 @@
 <?php
 
+namespace LottaLeben\CI;
+
 /**
  * Class Description
  */
@@ -12,7 +14,7 @@ class HelloTravis
 
     /**
      * YEAH THE CONSTRUCTOR
-     * @param string $message 
+     * @param string $message
      */
     public function __construct(string $message)
     {
@@ -28,8 +30,3 @@ class HelloTravis
         echo $this->message;
     }
 }
-
-
-$travisTest = new HelloTravis('nice to meet you!');
-
-?>
