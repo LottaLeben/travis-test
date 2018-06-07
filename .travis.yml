@@ -7,6 +7,6 @@ install:
 
 script:
     - vendor/bin/parallel-lint --exclude vendor/ .
-    - vendor/bin/phpcs --standard=PSR2 --extensions=php --ignore=vendor/ --ignore=wp/ --ignore=content/plugins/ .
+    - vendor/bin/phpcs --standard=PSR2 --extensions=php  --exclude=plugins/ content
     - vendor/bin/phploc --count-tests --exclude vendor/ .
     - vendor/bin/phpcpd --exclude=vendor/ --exclude=wp/ --exclude=content/plugins/ .
