@@ -13,8 +13,8 @@ jobs:
     include:
         - stage: Tests
           script: vendor/bin/parallel-lint --exclude vendor/ .
-          script: vendor/bin/phpcs --standard=PSR2 --extensions=php --ignore=vendor/ --ignore=wp/ --exclude=content/plugins/ .
-          script: vendor/bin/phploc --count-tests --exclude vendor/ .
-          script: vendor/bin/phpcpd --exclude=vendor/ --exclude=wp/ --exclude=content/plugins/ .
+        - script: vendor/bin/phpcs --standard=PSR2 --extensions=php --ignore=vendor/ --ignore=wp/ --exclude=content/plugins/ .
+        - script: vendor/bin/phploc --count-tests --exclude vendor/ .
+        - script: vendor/bin/phpcpd --exclude=vendor/ --exclude=wp/ --exclude=content/plugins/ .
         - stage: Deployment
           script: echo 'deploying YOOOh!'
