@@ -6,7 +6,7 @@ install:
     - composer install
 
 script:
-    - vendor/bin/parallel-lint --exclude vendor/ .
+    - vendor/bin/parallel-lint .
     - vendor/bin/phpcs --standard=PSR2 --extensions=php  --ignore=plugins/ content
-    - vendor/bin/phploc --count-tests --exclude vendor/ .
+    - vendor/bin/phploc --count-tests --exclude=vendor/ --exclude=wp/ --exclude=content/plugins .
     - vendor/bin/phpcpd --exclude=vendor/ --exclude=wp/ --exclude=content/plugins/ .
