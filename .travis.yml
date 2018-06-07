@@ -6,22 +6,15 @@ install:
     - composer install
 
 stages:
-    - Linting & Coding standards
-    - Code analysis
+    - Tests
+    - Deployment
 
 jobs:
     include:
-        - stage: Linting & Coding standards
+        - stage: Tests
           script: vendor/bin/parallel-lint --exclude vendor/ .
-        - stage: Linting & Coding standards
-          script: vendor/bin/phpcs --standard=PSR2 --extensions=php --ignore=vendor/ .
-        - stage: Code analysis
+          script: vendor/bin/phpcs --standard=PSR2 --extensions=php --ignore=vendor/ --ignore=wp/ --exclude=content/plugins/ .
           script: vendor/bin/phploc --count-tests --exclude vendor/ .
-        - stage: Code analysis
-          script: vendor/bin/phpcpd .
-        - stage: unit tests
-          addons:
-            mariadb: '10.3'
-          script:
-            - git clone git://develop.git.wordpress.org/ build/wordpress-develop
-            - mv build/wp-tests-config.php build/wordpress-develop/wp-tests-config.php
+          script: vendor/bin/phpcpd --exclude=vendor/ --exclude=wp/ --exclude=content/plugins/ .
+        - stage: Deployment
+          script: echo 'deploying YOOOh!'
