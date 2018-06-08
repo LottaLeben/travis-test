@@ -1,7 +1,8 @@
 <?php
 namespace LottaLeben\CI;
 
-class TestClass {
+class TestClass
+{
     public function __construct()
     {
         // @TODO
