@@ -23,4 +23,6 @@ deploy:
     script:
         rm -r .git
         rm .gitignore
-        rsync -av --delete ./ deploy@lotta.io:~/travis-test
+        rsync -av --delete ./ deploy@lotta.io:~/sites/develop/travis-test
+    on:
+        branch: develop
