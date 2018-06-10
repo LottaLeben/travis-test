@@ -21,8 +21,8 @@ deploy:
     skip_cleanup: true
     provider: script
     script:
-        rm -r .git
-        rm .gitignore
-        rsync -av --delete ./ deploy@lotta.io:~/sites/develop/travis-test
+        - rm -r .git
+        - rm .gitignore
+        - rsync -av --delete ./ deploy@lotta.io:~/sites/develop/travis-test
     on:
         branch: develop
