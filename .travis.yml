@@ -16,13 +16,12 @@ before_deploy:
     - eval "$(ssh-agent -s)"
     - chmod 600 /tmp/deploy_new
     - ssh-add /tmp/deploy_new
+    - rm -r .git
+    - rm .gitignore
 
 deploy:
-    skip_cleanup: true
     provider: script
-    script:
-        - rm -r .git
-        - rm .gitignore
-        - rsync -av --delete ./ deploy@lotta.io:~/sites/develop/travis-test
+    skip_cleanup: true
+    script: rsync -av --delete ./ deploy@lotta.io:~/sites/develop/travis-test
     on:
         branch: develop
