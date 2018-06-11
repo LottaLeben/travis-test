@@ -16,6 +16,7 @@ before_deploy:
     - eval "$(ssh-agent -s)"
     - chmod 600 /tmp/deploy_new
     - ssh-add /tmp/deploy_new
+    - rm -rf .travis
     - rm -rf .git
     - rm .gitignore
 
