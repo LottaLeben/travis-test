@@ -22,6 +22,6 @@ before_deploy:
 deploy:
     provider: script
     skip_cleanup: true
-    script: rsync -e "ssh -o StrictHostKeyChecking=no" -av --delete ./ deploy@lotta.io:~/sites/develop/travis-test
+    script: rsync -e "ssh -o StrictHostKeyChecking=no" -av --delete ./ deploy@lotta.io:~/develop/travis-test
     on:
         branch: develop
