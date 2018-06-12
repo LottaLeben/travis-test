@@ -3,7 +3,7 @@
 namespace LottaLeben\CI;
 
 /**
- * Class Description
+ * Class Description!
  */
 class HelloTravis
 {
@@ -11,6 +11,7 @@ class HelloTravis
      * @var string
      */
     public $message;
+    public $test;
 
     /**
      * YEAH THE CONSTRUCTOR
