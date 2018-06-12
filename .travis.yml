@@ -19,7 +19,7 @@ before_deploy:
     - rm -rf .travis
     - rm -rf .git
     - rm .gitignore
-    - zip -r build/release.zip .
+    - zip -qr build/release.zip .
 
 deploy:
     - provider: script
