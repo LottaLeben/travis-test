@@ -11,7 +11,7 @@ class HelloTravis
      * @var string
      */
     public $message;
-    public $test
+    public $test;
 
     /**
      * YEAH THE CONSTRUCTOR
