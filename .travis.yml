@@ -19,10 +19,24 @@ before_deploy:
     - rm -rf .travis
     - rm -rf .git
     - rm .gitignore
+    - zip -r build/release.zip .
 
 deploy:
-    provider: script
-    skip_cleanup: true
-    script: rsync -e "ssh -o StrictHostKeyChecking=no" -av --delete ./ deploy@lotta.io:~/develop/travis-test
-    on:
+    - provider: script
+      skip_cleanup: true
+      script: rsync -e "ssh -o StrictHostKeyChecking=no" -av --delete --exclude 'build' ./ deploy@lotta.io:~/develop/travis-test
+      on:
         branch: develop
+    - provider: script
+      skip_cleanup: true
+      script: rsync -e "ssh -o StrictHostKeyChecking=no" -av --delete --exclude 'build' ./ deploy@lotta.io:~/staging/travis-test
+      on:
+        branch: master
+    - provider: releases
+      skip_cleanup: true
+      api_key:
+        secure: GODRfpa1tzya4k3Ut4RS4I/MZsPUHdA4tWJSU5ecLt6xGho/ZdETthm3edZms8Z8UbGpWtaWIQ9RTMlXXxQOhB7TYc34y//Wczo8lznf2GbytauMsFZGEQtTKvL9a/YzDo/KicqEFNY1POnNx1e2I9NfQzp4qAAvTQr9195sAtwC3CDHjC9sTsGX0A3BCJKX0Pt6GaoCbN00GCiyt0QhvAl1BRJAddruATWe6zimqvYciH68+uNJ/Ki7Ro6Ky2J3JTK4yNrCqKSw4jG+FD60CPU1SBsog+/hGSHe8YxHnfWx/YIMER49uIgEmqthpHE3f0RL2F7rKg1D91sbT+TDWesvjsQZkkwSDHHNPKLNSrKifd3y2l0FECK4fFKeryunGvdiXGY6TbZW2B0Dvh83aYLiTjEbcGA44ll+tXR4WUmwmcMgnt8dVXhc1VUS1Bvt6YITroMS7c7vrCD+1eiSLiZLYaSMhAuhUje4WcMaTOIF678eTlUjXnNdlxICmUSPjqKcHAg9RoPjTMw4eVOgs20NBENmeCvjUEcquhPr+PI0lh6+jFKp9xw4nxy2ka+OiMejBrKmdm30HehXMCUL+/HoNViCEc01RmKVQyQ9TwiH7p8lice7Smg9pKNs3ZCLjlJCVPmUv+1K+pm2N3YzYAB7MUtiTA/9+aGMfsEeZIs=
+      file: build/release.zip
+      on:
+        branch: master
+        tags: true
