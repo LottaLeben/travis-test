@@ -20,6 +20,11 @@ before_deploy:
     - rm -rf .git
     - rm .gitignore
     - zip -qr build/release.zip .
+    - mv config/config.php.example config/config.php
+    - sed -i '' "s/%DBNAME%/test1/" config/config.php
+    - sed -i '' "s/%DBUSER%/test2/" config/config.php
+    - sed -i '' "s/%DBPW%/test3/" config/config.php
+    - sed -i '' "s/%DBHOST%/test4/" config/config.php
 
 deploy:
     - provider: script
