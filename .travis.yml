@@ -7,7 +7,7 @@ install:
 
 script:
     - vendor/bin/parallel-lint --exclude vendor/ .
-    - vendor/bin/phpcs --standard=PSR2 --extensions=php  --ignore=plugins/ content
+    - vendor/bin/phpcs -n --standard=PSR2 --extensions=php  --ignore=plugins/ content
     - vendor/bin/phploc --count-tests --exclude=vendor/ --exclude=wp/ --exclude=content/plugins .
     - vendor/bin/phpcpd --exclude=vendor/ --exclude=wp/ --exclude=content/plugins/ .
 
@@ -25,6 +25,7 @@ before_deploy:
     - sed -i "s/%DBUSER%/test2/" config/config.php
     - sed -i "s/%DBPW%/test3/" config/config.php
     - sed -i "s/%DBHOST%/test4/" config/config.php
+
 
 deploy:
     - provider: script
