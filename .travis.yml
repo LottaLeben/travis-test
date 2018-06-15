@@ -8,6 +8,10 @@ before_install:
 
 install:
     - composer install
+    - cd content/themes/lotta
+    - pwd
+    - cd ../../../
+    - pwd
 
 script:
     - vendor/bin/parallel-lint --exclude vendor/ .
